@@ -3,14 +3,14 @@ run-as: root
 
 phases:
   install:
-    runtime-versiones:
+    runtime-versions:
       nodejs: 22
     commands:
       - npm install -g serverless
       - npm install
-    build:
-      commands:
-        - serverless deploy --stage ${STAGE_NAME}
+  build:
+    commands:
+      - serverless deploy --stage ${STAGE_NAME}
 
 cache:
   paths:
