@@ -55,9 +55,7 @@ app.get('/agents/:agentId', async (req, res) => {
       const { id, name, description, role } = Item;
       res.json({ id, name, description, role });
     } else {
-      res
-        .status(404)
-        .json({ error: 'Could not find agent with provided agentId' });
+      res.status(404).json({ error: 'Could not find agent with provided agentId' });
     }
   } catch (error) {
     console.error(error);
