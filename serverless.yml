@@ -24,6 +24,7 @@ provider:
             - dynamodb:PutItem
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
+            - ssm:GetParameter
           Resource:
             - Fn::GetAtt: [AgentsTable, Arn]
   environment:
