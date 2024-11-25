@@ -29,7 +29,7 @@ app.get('/agents', async (req, res) => {
   const params = {
     TableName: AGENTS_TABLE,
   };
-console.log('')
+  
   try {
     const command = new ScanCommand(params);
     const { Items } = await docClient.send(command);
