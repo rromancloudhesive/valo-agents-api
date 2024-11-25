@@ -13,10 +13,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents",
+					"raw": "https://m7sdcn2qdh.execute-api.us-east-1.amazonaws.com/agents",
 					"protocol": "https",
 					"host": [
-						"lh2hh7img2",
+						"m7sdcn2qdh",
 						"execute-api",
 						"us-east-1",
 						"amazonaws",
@@ -45,10 +45,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents",
+					"raw": "https://m7sdcn2qdh.execute-api.us-east-1.amazonaws.com/agents",
 					"protocol": "https",
 					"host": [
-						"lh2hh7img2",
+						"m7sdcn2qdh",
 						"execute-api",
 						"us-east-1",
 						"amazonaws",
@@ -68,10 +68,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/82deda59-47aa-4611-87e5-13417316be1c",
+					"raw": "https://m7sdcn2qdh.execute-api.us-east-1.amazonaws.com/agents/7c8c483f-cb11-4e70-91ea-473c292acd64",
 					"protocol": "https",
 					"host": [
-						"lh2hh7img2",
+						"m7sdcn2qdh",
 						"execute-api",
 						"us-east-1",
 						"amazonaws",
@@ -79,7 +79,7 @@
 					],
 					"path": [
 						"agents",
-						"82deda59-47aa-4611-87e5-13417316be1c"
+						"7c8c483f-cb11-4e70-91ea-473c292acd64"
 					]
 				},
 				"description": "Get an agent by it's especific id"
@@ -92,10 +92,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/a3b16867-5a90-42bb-8b81-f92aaed898ea",
+					"raw": "https://m7sdcn2qdh.execute-api.us-east-1.amazonaws.com/agents/7c8c483f-cb11-4e70-91ea-473c292acd64",
 					"protocol": "https",
 					"host": [
-						"lh2hh7img2",
+						"m7sdcn2qdh",
 						"execute-api",
 						"us-east-1",
 						"amazonaws",
@@ -103,7 +103,7 @@
 					],
 					"path": [
 						"agents",
-						"a3b16867-5a90-42bb-8b81-f92aaed898ea"
+						"7c8c483f-cb11-4e70-91ea-473c292acd64"
 					]
 				}
 			},
@@ -124,10 +124,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/82deda59-47aa-4611-87e5-13417316be1c",
+					"raw": "https://m7sdcn2qdh.execute-api.us-east-1.amazonaws.com/agents/7c8c483f-cb11-4e70-91ea-473c292acd64",
 					"protocol": "https",
 					"host": [
-						"lh2hh7img2",
+						"m7sdcn2qdh",
 						"execute-api",
 						"us-east-1",
 						"amazonaws",
@@ -135,7 +135,7 @@
 					],
 					"path": [
 						"agents",
-						"82deda59-47aa-4611-87e5-13417316be1c"
+						"7c8c483f-cb11-4e70-91ea-473c292acd64"
 					]
 				}
 			},
