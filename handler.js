@@ -45,9 +45,7 @@ app.get('/agents', async (req, res) => {
 app.get('/agents/:agentId', async (req, res) => {
   const params = {
     TableName: AGENTS_TABLE,
-    Key: {
-      id: req.params.agentId,
-    },
+    Key: { id: req.params.agentId, },
   };
 
   try {
