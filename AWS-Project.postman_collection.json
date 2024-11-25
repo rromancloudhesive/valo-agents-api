@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "86a2de3b-9d10-4a02-993b-2bd8bfb802bc",
+		"name": "AWS-Project",
+		"description": "REST API to handle valorant agents, add, get one, get all, delete and update.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39890290"
+	},
+	"item": [
+		{
+			"name": "Get all agents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents",
+					"protocol": "https",
+					"host": [
+						"lh2hh7img2",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"agents"
+					]
+				},
+				"description": "Endpoint to get all agents from DynamoDB"
+			},
+			"response": []
+		},
+		{
+			"name": "Create agent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"brim\",\r\n    \"role\": \"duelist\",\r\n    \"description\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents",
+					"protocol": "https",
+					"host": [
+						"lh2hh7img2",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"agents"
+					]
+				},
+				"description": "Endpoint to create an agent and store it on dynamodb, example below:"
+			},
+			"response": []
+		},
+		{
+			"name": "Get agent by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/82deda59-47aa-4611-87e5-13417316be1c",
+					"protocol": "https",
+					"host": [
+						"lh2hh7img2",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"agents",
+						"82deda59-47aa-4611-87e5-13417316be1c"
+					]
+				},
+				"description": "Get an agent by it's especific id"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete agent",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/a3b16867-5a90-42bb-8b81-f92aaed898ea",
+					"protocol": "https",
+					"host": [
+						"lh2hh7img2",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"agents",
+						"a3b16867-5a90-42bb-8b81-f92aaed898ea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update agent",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"fed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lh2hh7img2.execute-api.us-east-1.amazonaws.com/agents/82deda59-47aa-4611-87e5-13417316be1c",
+					"protocol": "https",
+					"host": [
+						"lh2hh7img2",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"agents",
+						"82deda59-47aa-4611-87e5-13417316be1c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
