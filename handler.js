@@ -127,9 +127,7 @@ app.delete('/agents/:id', async (req, res) => {
 
   const params = {
     TableName: AGENTS_TABLE,
-    Key: {
-      id,
-    }
+    Key: { id, }
   };
 
   try {
