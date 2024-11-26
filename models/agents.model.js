@@ -14,10 +14,10 @@ const { randomUUID } = require('crypto');
 
 class AgentModel {
   AGENTS_TABLE = process.env.AGENTS_TABLE;
+  client = new DynamoDBClient();
+  docClient = DynamoDBDocumentClient.from(this.client);
 
   constructor() {
-    client = new DynamoDBClient();
-    docClient = DynamoDBDocumentClient.from(this.client);
   }
 
   async getAll() {
