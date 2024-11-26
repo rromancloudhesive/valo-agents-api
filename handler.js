@@ -32,11 +32,10 @@ app.get('/agents', async (req, res) => {
   
   try {
     const command = new ScanCommand(params);
-    const { Items } = await docClient.send(command);
+    const response = await docClient.send(command);
 
-    res.json({ data: Items });
+    res.json({ data: response.Items });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Could not retrieve agents' });
   }
 });
@@ -66,10 +65,11 @@ app.get('/agents/:agentId', async (req, res) => {
 //Create agent
 app.post('/agents', async (req, res) => {
   const { name, description, role } = req.body;
+
   if(!name || !description || !role) {
     return res.status(400).json({ error: 'name, description, role fields are required' });
   }else if(!AGENTS_ROLES.includes(role.toLowerCase())) {
-    return res.status(400).send({ error: 'Invalid role, muste be duelist, controller, sentinel or initiator' });
+    return res.status(400).json({ error: 'Invalid role, muste be duelist, controller, sentinel or initiator' });
   }
 
   const id = randomUUID();
@@ -81,7 +81,7 @@ app.post('/agents', async (req, res) => {
   try {
     const command = new PutCommand(params);
     await docClient.send(command);
-    res.json({ id, name, role, description });
+    res.status(201).json({ id, name, role, description });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Could not create agent' });
@@ -145,3 +145,4 @@ app.use((req, res, next) => {
 });
 
 exports.handler = serverless(app);
+exports.app = app;
