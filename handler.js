@@ -1,6 +1,7 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const errorHandler = require('./middlewares/error-middleware.js');
+const routes = require('./routes');
 
 const app = express();
 
