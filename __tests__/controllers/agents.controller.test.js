@@ -23,8 +23,7 @@ const mockItems = [
 describe('[CONTROLLER] getAll endpoint', () => {
 
     beforeEach(() => {
-        AgentModel.mockClear()
-        jest.clearAllMocks();
+        jest.resetAllMocks();
     });
 
     it('Should return 200 and an array of agents', async() => {
@@ -46,8 +45,7 @@ describe('[CONTROLLER] getAll endpoint', () => {
 describe('[CONTROLLER] getById endpoint', () => {
 
     beforeEach(() => {
-        AgentModel.mockClear()
-        jest.clearAllMocks();
+        jest.resetAllMocks();
     });
 
     it('Should return 200 and an agent', async() => {
@@ -66,7 +64,7 @@ describe('[CONTROLLER] getById endpoint', () => {
     });
 
     it('Should return 500 if there is any error while getting agent', async() => {
-        AgentModel.prototype.getById.mockRejectedValueOnce(new Error('asdads'));
+        AgentModel.prototype.getById.mockRejectedValueOnce(new Error('Error'));
 
         const res = await request(app).get('/api/agents/' + mockItem.id);
        
@@ -78,8 +76,7 @@ describe('[CONTROLLER] getById endpoint', () => {
 describe('[CONTROLLER] create endpoint', () => {
 
     beforeEach(() => {
-        AgentModel.mockClear()
-        jest.clearAllMocks();
+        jest.resetAllMocks();
     });
 
     it('Should return 200 and the new agent', async() => {
@@ -88,6 +85,8 @@ describe('[CONTROLLER] create endpoint', () => {
         const res = await request(app)
             .post('/api/agents/')
             .send(mockItem);
+
+        console.log('res body', res.body);
 
         expect(res.status).toBe(201);
         expect(res.body).toEqual(mockItem);
@@ -104,6 +103,7 @@ describe('[CONTROLLER] create endpoint', () => {
         const res = await request(app)
             .post('/api/agents/')
             .send(itemWithoutNameField);
+            console.log('res body', res.body);
 
         expect(res.status).toBe(400);
     });
@@ -120,17 +120,18 @@ describe('[CONTROLLER] create endpoint', () => {
         const res = await request(app)
             .post('/api/agents/')
             .send(itemWithInvalidRole);
+        console.log('res body', res.body);
 
         expect(res.status).toBe(400);
     });
 
     it('Should return 500 if there is any error while creating agent', async() => {
-        AgentModel.prototype.create.mockRejectedValueOnce('error');
+        AgentModel.prototype.create.mockRejectedValueOnce(new Error('Error'));
 
         const res = await request(app)
             .post('/api/agents')
             .send(mockItem);
-            
+        console.log('res', res);
         expect(res.status).toBe(500);
     });
 });
@@ -138,8 +139,7 @@ describe('[CONTROLLER] create endpoint', () => {
 describe('[CONTROLLER] update endpoint', () => {
 
     beforeEach(() => {
-        AgentModel.mockClear()
-        jest.clearAllMocks();
+        jest.resetAllMocks();
     });
 
     it('Should return 200 and the updated agent', async() => {
@@ -178,8 +178,7 @@ describe('[CONTROLLER] update endpoint', () => {
 describe('[CONTROLLER] delete endpoint', () => {
 
     beforeEach(() => {
-        AgentModel.mockClear()
-        jest.clearAllMocks();
+        jest.resetAllMocks();
     });
 
     it('Should return 200 and deleted agent message', async() => {
