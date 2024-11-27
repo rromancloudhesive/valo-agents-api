@@ -1,6 +1,6 @@
 const { createUpdateExpressions } = require('../utils/dynamodb');
-
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+require('dotenv').config();
 
 const {
   DynamoDBDocumentClient,
@@ -21,6 +21,10 @@ class AgentModel {
   }
 
   async getAll() {
+    const params = {
+      TableName: this.AGENTS_TABLE,
+    };
+
     const command = new ScanCommand(params);
     const response = await this.docClient.send(command);
 
@@ -49,7 +53,8 @@ class AgentModel {
     };
   
     const command = new PutCommand(params);
-    return this.docClient.send(command);
+    await this.docClient.send(command);
+    return { ...params.Item, ...newAgent };
   }
 
   async update(id, updatedAgentFields) {
