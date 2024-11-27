@@ -1,8 +1,8 @@
 const { app }= require('../../handler');
 const request = require('supertest');
 
-const { AgentModel } = require('../../models/agents.model');
-jest.mock('../../models/agents.model');
+const { AgentService } = require('../../src/services/agents.service');
+jest.mock('../../src/services/agents.service');
 
 const mockItem = {
     "id": "c1e9a777-134e-44c7-b6b6-7c47389028d0",
@@ -27,7 +27,7 @@ describe('[CONTROLLER] getAll endpoint', () => {
     });
 
     it('Should return 200 and an array of agents', async() => {
-        AgentModel.prototype.getAll.mockResolvedValueOnce(mockItems); 
+        AgentService.prototype.getAll.mockResolvedValueOnce(mockItems); 
 
         const res = await request(app).get('/api/agents');
         expect(res.status).toBe(200);
@@ -35,7 +35,7 @@ describe('[CONTROLLER] getAll endpoint', () => {
     });
 
     it('Should return 500', async() => {
-        AgentModel.prototype.getAll.mockRejectedValueOnce('error');
+        AgentService.prototype.getAll.mockRejectedValueOnce('error');
 
         const res = await request(app).get('/api/agents');
         expect(res.status).toBe(500);
@@ -49,7 +49,7 @@ describe('[CONTROLLER] getById endpoint', () => {
     });
 
     it('Should return 200 and an agent', async() => {
-        AgentModel.prototype.getById.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.getById.mockResolvedValueOnce(mockItem); 
 
         const res = await request(app).get('/api/agents/' + mockItem.id);
         expect(res.status).toBe(200);
@@ -57,14 +57,14 @@ describe('[CONTROLLER] getById endpoint', () => {
     });
 
     it('Should return 404 if there is no agent with given id', async() => {
-        AgentModel.prototype.getById.mockResolvedValueOnce(null); 
+        AgentService.prototype.getById.mockResolvedValueOnce(null); 
 
         const res = await request(app).get('/api/agents/' + mockItem.id);
         expect(res.status).toBe(404);
     });
 
     it('Should return 500 if there is any error while getting agent', async() => {
-        AgentModel.prototype.getById.mockRejectedValueOnce(new Error('Error'));
+        AgentService.prototype.getById.mockRejectedValueOnce(new Error('Error'));
 
         const res = await request(app).get('/api/agents/' + mockItem.id);
        
@@ -80,7 +80,7 @@ describe('[CONTROLLER] create endpoint', () => {
     });
 
     it('Should return 200 and the new agent', async() => {
-        AgentModel.prototype.create.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.create.mockResolvedValueOnce(mockItem); 
 
         const res = await request(app)
             .post('/api/agents/')
@@ -93,7 +93,7 @@ describe('[CONTROLLER] create endpoint', () => {
     });
 
     it('Should return 400 if a required parameter is missing', async() => {
-        AgentModel.prototype.create.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.create.mockResolvedValueOnce(mockItem); 
 
         const itemWithoutNameField = {
             description: mockItem.description,
@@ -109,7 +109,7 @@ describe('[CONTROLLER] create endpoint', () => {
     });
 
     it('Should return 400 if given  role is invalid ', async() => {
-        AgentModel.prototype.create.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.create.mockResolvedValueOnce(mockItem); 
 
         const itemWithInvalidRole = {
             description: mockItem.description,
@@ -126,7 +126,7 @@ describe('[CONTROLLER] create endpoint', () => {
     });
 
     it('Should return 500 if there is any error while creating agent', async() => {
-        AgentModel.prototype.create.mockRejectedValueOnce(new Error('Error'));
+        AgentService.prototype.create.mockRejectedValueOnce(new Error('Error'));
 
         const res = await request(app)
             .post('/api/agents')
@@ -143,7 +143,7 @@ describe('[CONTROLLER] update endpoint', () => {
     });
 
     it('Should return 200 and the updated agent', async() => {
-        AgentModel.prototype.update.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.update.mockResolvedValueOnce(mockItem); 
 
         const res = await request(app)
             .patch('/api/agents/' + mockItem.id)
@@ -154,7 +154,7 @@ describe('[CONTROLLER] update endpoint', () => {
     });
 
     it('Should return 400 if given role is invalid ', async() => {
-        AgentModel.prototype.update.mockResolvedValueOnce(mockItem); 
+        AgentService.prototype.update.mockResolvedValueOnce(mockItem); 
 
         const res = await request(app)
             .patch('/api/agents/' + mockItem.id)
@@ -164,7 +164,7 @@ describe('[CONTROLLER] update endpoint', () => {
     });
 
     it('Should return 500 if there is any error while updating agent', async() => {
-        AgentModel.prototype.update.mockRejectedValueOnce('error');
+        AgentService.prototype.update.mockRejectedValueOnce('error');
 
         const res = await request(app)
             .patch('/api/agents/' + mockItem.id)
@@ -182,7 +182,7 @@ describe('[CONTROLLER] delete endpoint', () => {
     });
 
     it('Should return 200 and deleted agent message', async() => {
-        AgentModel.prototype.delete.mockResolvedValueOnce({ message: 'Deleted successfully' }); 
+        AgentService.prototype.delete.mockResolvedValueOnce({ message: 'Deleted successfully' }); 
 
         const res = await request(app)
             .delete('/api/agents/' + mockItem.id)
@@ -192,7 +192,7 @@ describe('[CONTROLLER] delete endpoint', () => {
     });
 
     it('Should return 500 if there is any error while deleting agent', async() => {
-        AgentModel.prototype.delete.mockRejectedValueOnce('error');
+        AgentService.prototype.delete.mockRejectedValueOnce('error');
 
         const res = await request(app)
             .delete('/api/agents/' + mockItem.id)

@@ -1,4 +1,4 @@
-const { createUpdateExpressions } = require('../utils/dynamodb');
+const { createUpdateExpressions } = require('../../src/utils/dynamodb');
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
 require('dotenv').config();
 
@@ -12,7 +12,7 @@ const {
 } = require('@aws-sdk/lib-dynamodb');
 const { randomUUID } = require('crypto');
 
-class AgentModel {
+class AgentService {
   AGENTS_TABLE = process.env.AGENTS_TABLE;
   client = new DynamoDBClient();
   docClient = DynamoDBDocumentClient.from(this.client);
@@ -87,5 +87,5 @@ class AgentModel {
 };
 
 module.exports = { 
-  AgentModel,
+  AgentService,
 };

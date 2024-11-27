@@ -1,5 +1,5 @@
 const express = require('express');
-const agentsRoutes = require('../routes/agents.routes.js');
+const agentsRoutes = require('./agents.routes.js');
 
 const router = express();
 
