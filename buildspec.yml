@@ -8,8 +8,7 @@ phases:
     commands:
       - npm install -g serverless
       - npm install
-  test:
-    on-failure: ABORT
+  pre_build:
     commands:
       - npm run test
   build:
