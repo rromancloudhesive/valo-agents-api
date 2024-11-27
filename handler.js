@@ -15,9 +15,5 @@ app.use((req, res, next) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log('running on port 4000');
-})
-
 exports.handler = serverless(app);
 exports.app = app;

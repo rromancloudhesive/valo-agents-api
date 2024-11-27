@@ -39,7 +39,7 @@ describe('[getAll]', () => {
     });
 
     const res = await agentService.getAll();
-    console.log('res', res);
+    
     expect(res).toEqual(mockItems);
   });
 
@@ -55,6 +55,7 @@ describe('[getById]', () => {
     ddbMock.on(GetCommand).resolves({ Item: mockItem, });
 
     const res = await agentService.getById(mockItem.id);
+
     expect(res).toEqual(mockItem);
   });
 
@@ -68,7 +69,9 @@ describe('[getById]', () => {
 describe('[create]', () => {
   it('Should create a new agent and return it', async() => {
     ddbMock.on(PutCommand).resolves({ Item: mockItem, });
+
     const res = await agentService.create(mockItem);
+    
     expect(res).toEqual(mockItem);
   });
 
@@ -82,7 +85,9 @@ describe('[create]', () => {
 describe('[update]', () => {
   it('Should update an agent and return it', async() => {
     ddbMock.on(UpdateCommand).resolves({ Attributes: mockItem, });
+
     const res = await agentService.update(mockItem.id, { name: mockItem.name });
+
     expect(res).toEqual(mockItem);
   });
 

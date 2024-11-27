@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest",
-    "start": "node handler.js"
+    "test": "jest"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.585.0",
