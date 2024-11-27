@@ -8,6 +8,10 @@ phases:
     commands:
       - npm install -g serverless
       - npm install
+  test:
+    on-failure: ABORT
+    commands:
+      - npm run test
   build:
     commands:
       - serverless deploy --stage ${STAGE_NAME}
