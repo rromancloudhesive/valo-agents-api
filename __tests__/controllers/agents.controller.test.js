@@ -66,9 +66,10 @@ describe('[CONTROLLER] getById endpoint', () => {
     });
 
     it('Should return 500 if there is any error while getting agent', async() => {
-        AgentModel.prototype.getById.mockRejectedValueOnce('error');
+        AgentModel.prototype.getById.mockRejectedValueOnce(new Error('asdads'));
 
         const res = await request(app).get('/api/agents/' + mockItem.id);
+       
         expect(res.status).toBe(500);
     });
 });
@@ -127,7 +128,7 @@ describe('[CONTROLLER] create endpoint', () => {
         AgentModel.prototype.create.mockRejectedValueOnce('error');
 
         const res = await request(app)
-            .post('/api/agents/')
+            .post('/api/agents')
             .send(mockItem);
             
         expect(res.status).toBe(500);

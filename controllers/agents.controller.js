@@ -4,16 +4,16 @@ const agentModel = new AgentModel();
 
 const AGENTS_ROLES = ['controller', 'initiator', 'duelist', 'sentinel'];
 
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
   try {
     const agents = await agentModel.getAll();
     res.send({ data: agents });
   } catch (error) {
-    throw error;
+    next(error);
   }
 }
 
-const getById = async (req, res) => {
+const getById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const agent = await agentModel.getById(id);
@@ -22,11 +22,11 @@ const getById = async (req, res) => {
 
     return res.status(200).send(agent);
   } catch (error) {
-    throw error;
+    next(error);
   }
 }
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
   try {
     const { name, description, role, url } = req.body;
 
@@ -40,11 +40,11 @@ const create = async (req, res) => {
 
     return res.status(201).send(newAgent);
   } catch (error) {
-    throw error;
+    next(error);
   }
 }
 
-const update = async (req, res) => {
+const update = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name, description, role, url } = req.body;
@@ -56,11 +56,11 @@ const update = async (req, res) => {
     const updatedAgent = await agentModel.update(id, { name, description, role, url });
     return res.send(updatedAgent);
   } catch (error) {
-    throw error;
+    next(error);
   }
 }
 
-const deleteAgent = async (req, res) => {
+const deleteAgent = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -68,7 +68,7 @@ const deleteAgent = async (req, res) => {
 
     return res.status(200).send({ message: `agent with id= ${id} deleted sucessfully` });
   } catch (error) {
-    throw error;
+    next(error);
   }
 }
 
