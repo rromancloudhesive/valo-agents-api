@@ -87,5 +87,5 @@ class AgentModel {
 };
 
 module.exports = { 
-  AgentModel 
+  AgentModel,
 };
